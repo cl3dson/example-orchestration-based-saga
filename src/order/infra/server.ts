@@ -1,17 +1,16 @@
 import "reflect-metadata";
 import * as cors from "cors";
-import "./api/customer.controller"
+import "./api/rest/customer.controller"
 import * as bodyParser from "body-parser";
 import { InversifyExpressServer } from "inversify-express-utils";
-import {Container} from "inversify";
+import {APPContainer} from "./container";
 
 export class App {
 
     private server;
 
     constructor() {
-        const myContainer = new Container();
-        const server = new InversifyExpressServer(myContainer);
+        const server = new InversifyExpressServer(APPContainer);
 
         server.setConfig(app => {
             App.config(app);
