@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["es2017"],
+    "module": "commonjs",
+    "outDir": "build",
+    "typeRoots": ["../node_modules/@types"],
+    "types": ["reflect-metadata", "node"],
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "skipLibCheck": true
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "build", "test/**/*.ts"],
+  "buildOnSave": true,
+  "compileOnSave": true
+}

@@ -1,0 +1,23 @@
+{
+  "name": "sagas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:customer": "node build/customer/infra/server.js",
+    "start:order": "node build/order/infra/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^12.12.20",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "inversify": "^5.0.1",
+    "inversify-express-utils": "^6.3.2",
+    "node": "^13.3.0",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^3.7.3"
+  }
+}
