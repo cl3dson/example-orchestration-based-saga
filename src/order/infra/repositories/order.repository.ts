@@ -1,5 +1,8 @@
-import {controller, httpGet} from "inversify-express-utils";
+import { OrderModel } from "../model/order";
+import {RepositoryBase} from "../../domain/repository.base";
+import {injectable} from "inversify";
 
-export class OrderRepository {
-
+@injectable()
+export class OrderRepository extends RepositoryBase<any> {
+    readonly _model = OrderModel;
 }

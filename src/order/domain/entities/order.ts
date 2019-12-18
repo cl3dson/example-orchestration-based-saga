@@ -1,7 +1,6 @@
-export class Customer {
-    id : string;
+export class Order {
     user_id : string;
     description : string;
-    valor : number;
+    value : number;
     createdAt: Date;
 }
