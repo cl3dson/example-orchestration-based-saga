@@ -4,6 +4,8 @@ import "./api/rest/customer.controller"
 import * as bodyParser from "body-parser";
 import { InversifyExpressServer } from "inversify-express-utils";
 import {APPContainer} from "./container";
+import {MessageBroker} from "../connections/message.broker";
+require("dotenv").config({path:process.cwd()+"/src/order/.env"});
 
 export class App {
 
@@ -11,23 +13,23 @@ export class App {
 
     constructor() {
         const server = new InversifyExpressServer(APPContainer);
-
         server.setConfig(app => {
             App.config(app);
         });
-
         this.server = server;
     }
 
     private static config(app): void {
+
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({ extended: false }));
         app.use(cors());
     }
 
     public async start() {
-        this.server.build().listen(8080, () => {
-            console.log(`Running in port 8080`);
+        await new MessageBroker().connect();
+        this.server.build().listen(process.env.PORT, () => {
+            console.log(`Running in port ${process.env.PORT}`);
         });
     }
 }
