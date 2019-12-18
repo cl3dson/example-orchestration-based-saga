@@ -14,4 +14,4 @@ const CustomerSchema = new Schema(
 );
 
 export interface IOrderModel extends Order, Document {}
-export const OrderModel : Model<IOrderModel> = model<IOrderModel>(process.env.COLLECTION_NAME, CustomerSchema);
+export const OrderModel : Model<IOrderModel> = model<IOrderModel>("order", CustomerSchema);

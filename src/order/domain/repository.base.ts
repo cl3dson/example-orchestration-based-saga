@@ -1,15 +1,18 @@
 import { injectable } from "inversify";
 import { Document, Model, Types } from "mongoose";
 import {Handler} from "./interfaces/handler";
+import {ObservableDataBase} from "./interfaces/observable.data.base";
 
 @injectable()
 export class RepositoryBase<T extends Document> implements IRepositoryBase<T> {
     protected _model: Model<T> | any;
+    protected _observable: ObservableDataBase = null;
     protected _afterCreated : Array<Handler> = [];
     protected _afterUpdate: Array<Handler> = [];
 
     async create(item: T): Promise<T> {
         const created =  await this._model.create(item);
+        this._observable.created(created)
         this._afterCreated.map(exec => {
             exec.handler(created)
         });
