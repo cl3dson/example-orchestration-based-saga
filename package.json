@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:customer": "node build/customer/infra/server.js",
-    "start:order": "node build/order/infra/server.js"
+    "start:customer": "node build/customer/module/server.js",
+    "start:order": "node build/order/module/server.js"
   },
   "author": "",
   "license": "ISC",
