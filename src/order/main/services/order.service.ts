@@ -7,10 +7,14 @@ export class OrderService {
     constructor (@inject("OrderRepository") private orderRepository: OrderRepository) {}
 
     public async create() {
-        return 'created'
+        return this.orderRepository.create({
+            user_id: "1222",
+            description: "aaaa",
+            value: 200,
+        })
     }
 
     public async get() {
-        return 'get'
+        return this.orderRepository.find({});
     }
 }

@@ -5,6 +5,7 @@ const CustomerSchema = new Schema(
     {
         user_id: { type: String, required: true },
         description: { type: String, required: true },
+        status : { type: String, default: "processing" },
         value: { type: Number, required: true },
     },
     {
@@ -13,4 +14,4 @@ const CustomerSchema = new Schema(
 );
 
 export interface IOrderModel extends Order, Document {}
-export const OrderModel : Model<IOrderModel> = model<IOrderModel>("order", CustomerSchema);
+export const OrderModel : Model<IOrderModel> = model<IOrderModel>(process.env.COLLECTION_NAME, CustomerSchema);

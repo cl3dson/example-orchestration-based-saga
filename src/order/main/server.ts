@@ -5,6 +5,7 @@ import * as bodyParser from "body-parser";
 import { InversifyExpressServer } from "inversify-express-utils";
 import {APPContainer} from "./container";
 import {MessageBroker} from "../connections/message.broker";
+import {Mongodb} from "../connections/mongodb";
 require("dotenv").config({path:process.cwd()+"/src/order/.env"});
 
 export class App {
@@ -27,7 +28,10 @@ export class App {
     }
 
     public async start() {
+
         await new MessageBroker().connect();
+        await new Mongodb().connect()
+
         this.server.build().listen(process.env.PORT, () => {
             console.log(`Running in port ${process.env.PORT}`);
         });

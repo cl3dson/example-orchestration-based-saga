@@ -1,4 +1,4 @@
-import {BaseHttpController, controller, httpGet} from "inversify-express-utils";
+import {BaseHttpController, controller, httpGet, httpPost} from "inversify-express-utils";
 import {inject} from "inversify";
 import {OrderService} from "../../services/order.service";
 
@@ -14,7 +14,7 @@ export class CustomerController extends BaseHttpController {
         return await this.orderService.get();
     }
 
-    @httpGet("/")
+    @httpPost("/")
     public async create() {
         return await this.orderService.create();
     }
